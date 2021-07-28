@@ -21,6 +21,12 @@ pgadmin:
   #config:
   #  - name: "PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION"
   #    value: "False"
+  #secretConfig:
+  #  - name: PGADMIN_CONFIG_OAUTH2_CLIENT_SECRET
+  #      valueFrom:
+  #        secretKeyRef:
+  #          name: mysecret
+  #          key: client-secret
   
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/

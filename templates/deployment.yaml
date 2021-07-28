@@ -32,6 +32,13 @@ spec:
               secretKeyRef:
                 name: {{ template "pgadmin.passwordSecret" . }}
                 key: pgadmin-password
+          {{- range .Values.pgadmin.secretConfig }}
+          - name: {{ .name | upper }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ .name.valueFrom.secretKeyRef.name | upper }}
+                key: {{ .name.valueFrom.secretKeyRef.key | quote }}
+          {{- end }}
          {{- if .Values.pgadmin.tls }}
           - name: PGADMIN_ENABLE_TLS
             value: {{ .Values.pgadmin.tls | quote }}
